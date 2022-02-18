@@ -13,32 +13,97 @@ import {
   StatusBar,
   StyleSheet,
   Text,
-  useColorScheme,
+  Image,
   View,
+  TouchableOpacity
 } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SplashScreen from 'react-native-splash-screen';
+import LoginEmailScreen from './src/screens/LoginEmailScreen';
+import LoginMainScreen from './src/screens/LoginMainScreen';
+import AddressScreen from './src/screens/AddressScreen';
+import { useNavigation } from '@react-navigation/native';
 
-const App =()=> {
+
+
+const Stack = createNativeStackNavigator();
+
+
+function BackButton() {
+  const navigation = useNavigation();
+  return(
+    <TouchableOpacity onPress={() => navigation.goBack()}>
+      <Image 
+        source={require('./src/assets/previous.png')}
+        style={{ width: 15, height: 15, marginRight: 10 }}
+      />
+    </TouchableOpacity>
+  )
+}
+
+function CloseButton() {
+  const navigation = useNavigation();
+  return(
+    <TouchableOpacity onPress={() => navigation.navigate('Address')}>
+      <Image 
+        source={require('./src/assets/close.png')}
+        style={{ width: 15, height: 15, marginRight: 10 }}
+      />
+    </TouchableOpacity>
+  )
+}
+
+function App({navigation}) {
 
   useEffect(() => 
-      // do stuff while splash screen is shown
-        // After having done stuff (such as async tasks) hide the splash screen
-        SplashScreen.hide(),
+  // do stuff while splash screen is shown
+    // After having done stuff (such as async tasks) hide the splash screen
+    SplashScreen.hide(),
   []);
 
   return (
-    <SafeAreaView>
-      <StatusBar 
-        barStyle={'light-content'} 
-        backgroundColor={'#002f34'}
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName='LoginMain'>
+        <Stack.Screen 
+          name="LoginMain"
+          component={LoginMainScreen}
+          options={{
+            // title: ' ',
+            // headerShadowVisible: false,
+            // headerLeft: ((props) => <CloseButton {...props} />),
+            // headerStyle: {
+            //   backgroundColor: 'transparent',
+            // }
+            headerShown: false
+          }}
+
         />
+        <Stack.Screen 
+          name="LoginEmail" 
+          component={LoginEmailScreen} 
+          options={{
+            title: 'Login',
+            headerShadowVisible: false,
+            headerLeft: ((props) => <BackButton {...props} />),
+            headerStyle: {
+              backgroundColor: '#f4511e',
+            }
+          }}/>
+
+        <Stack.Screen
+          name="Address"
+          component={AddressScreen} 
+          options={{
+            headerShown: false
+          }}
+        />
+      </Stack.Navigator>
       
-      <View style={styles.container}>
-        <Text style={styles.title}>Hello World</Text>
-      </View>
-    </SafeAreaView>
+
+    </NavigationContainer>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -66,3 +131,5 @@ const styles = StyleSheet.create({
 });
 
 export default App;
+
+
