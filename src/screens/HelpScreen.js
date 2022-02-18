@@ -37,7 +37,7 @@ function HelpScreen({ route, navigation }) {
                         (
                             <View></View>
                         )}
-                        
+
                         <WebView
                             onLoad={() => setLoading(false)}
                             source={{ uri: 'https://help.olx.com.pk/hc/en-us' }} 

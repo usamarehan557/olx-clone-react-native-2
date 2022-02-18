@@ -97,7 +97,7 @@ function LoginMainScreen({navigation}) {
                 </TouchableOpacity>
                 <TouchableOpacity
                   onPress={() => {
-                    navigation.navigate('LoginInput', {
+                    navigation.navigate('LoginEmail', {
                       title: 'Login',
                       tagline: 'Enter your email',
                       subTagline: ''
@@ -206,8 +206,8 @@ const styles = StyleSheet.create({
       color: '#001115',
     },
     buttonIcon: {
-      width: 15,
-      height: 15,
+      width: 18,
+      height: 18,
       marginRight: 20,
       alignSelf: 'flex-end',
     },

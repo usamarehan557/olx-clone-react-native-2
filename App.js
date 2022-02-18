@@ -81,14 +81,19 @@ function App({navigation}) {
 
         />
         <Stack.Screen 
-          name="LoginEmail" 
+          name="LoginEmail"
           component={LoginEmailScreen} 
           options={{
             title: 'Login',
+            headerTitleStyle: {
+              fontWeight: '700',
+              fontSize: 18,
+              color: '#003034'
+            },
             headerShadowVisible: false,
             headerLeft: ((props) => <BackButton {...props} />),
             headerStyle: {
-              backgroundColor: '#f4511e',
+              backgroundColor: 'transparent',
             }
           }}/>
 
