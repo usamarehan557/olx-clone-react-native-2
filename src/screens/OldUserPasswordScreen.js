@@ -13,16 +13,14 @@ import {
     Image
 } from 'react-native';
 
-import header from '../components/header';
-
 
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 
 
-const LoginPhoneScreen = ({route, navigation}) => {
-  const { title, tagline, subTagline } = route.params;
-  const [phoneNo, setPhoneNo] = useState('');
+const OldUserPasswordScreen = ({route, navigation}) => {
+  const { title, phone } = route.params;
+  const [email, setEmail] = useState();
   const [validation, setValidation] = useState(false);
   const [errormsg, setErrormsg] = useState('');
   const [bordercolor, setBordercolor] = useState('#003034');
@@ -51,7 +49,6 @@ const validate = (text) => {
     setBordercolor('cyan');
     setButtonColor('#003034');
     setButtonTextColor('white');
-    setPhoneNo(text);
   }
 }
 
@@ -80,45 +77,46 @@ return (
             style={{margin: 5, height: 80, width: 80}}
           />
             <Text style={styles.tagline}>
-                Enter your phone
+                Enter your password
             </Text>
             <Text style={styles.subtagline}>
-                We will send a confirmation code to your phone
+                Welcome back <Text style={{fontWeight: 'bold'}}>{phone}</Text>
             </Text>
 
             <View style={[styles.inputView, {borderColor: bordercolor,}]}>
-                <Text 
-                    style={styles.flag}
-                    onPress={() => navigation.navigate('Test')}
-                >+92  </Text>
-                <View style={styles.verticleLine}></View>
+                
                 <TextInput
                     onBlur={() => onBlur()}
                     onFocus={() => onFocus()}
-                    keyboardType={'phone-pad'}
                     maxLength={11}
+                    secureTextEntry={true}
                     style={styles.InputForm}
-                    placeholder="Phone Number"
-                    onChangeText={(text) => validate(text)}
+                    placeholder="Password"
+                    onChangeText={(text) => console.log(text)}
+                />
+                <Image 
+                    source={require("../assets/eye.png")}
+                    style={styles.eye}
                 />
             </View>
 
             
-            <Text
-            style={{color: 'red', marginLeft: 20}}>{errormsg}</Text>
+            <Text style={{color: 'red', marginLeft: 20}}>
+                {errormsg}
+            </Text>
+
+            <Text style={styles.otherAddress}>
+                forgot your password?
+            </Text>
+
       </ScrollView>
+
 
 
 
     <View style={styles.buttonView}>
         <TouchableOpacity
         disabled={!validation}
-        onPress={() => {
-          navigation.navigate('OldUserPassword', {
-            title: '  Login',
-            phone: phoneNo
-          });
-        }}
         style={[styles.button,{ backgroundColor: buttonColor}]}>
                 <Text style={[styles.buttonText, {color: buttonTextColor}]}>Next</Text>
         </TouchableOpacity>
@@ -150,15 +148,14 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderWidth: 1,
     width: '90%',
+    justifyContent: 'space-between',
     marginLeft: 15,
     marginTop: 20,
-    paddingLeft: 10
+    paddingHorizontal: 15
   },
-  flag: {
-    backgroundColor: 'red',
+  eye: {
     alignSelf: 'center',
-    // marginTop: 20,
-    // marginBottom: 5
+    height: 30, width: 30
   },
   verticleLine: {
     height: '50%',
@@ -171,10 +168,16 @@ const styles = StyleSheet.create({
   },
   InputForm: {
     // height: 50,
-    // width: Width / 1.08,
+    width: '85%',
     alignSelf: 'center',
     // marginTop: 5,
     // marginBottom: 5
+  },
+  otherAddress: {
+    fontWeight: '700',
+    color: '#4286f4',
+    marginLeft: 15,
+    marginTop: 15
   },
   button: {
     // backgroundColor: '#003034',
@@ -198,4 +201,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default LoginPhoneScreen;
+export default OldUserPasswordScreen;

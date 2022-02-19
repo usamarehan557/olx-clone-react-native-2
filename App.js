@@ -25,6 +25,8 @@ import LoginMainScreen from './src/screens/LoginMainScreen';
 import LoginPhoneScreen from './src/screens/LoginPhoneScreen';
 import AddressScreen from './src/screens/AddressScreen';
 import HelpScreen from './src/screens/HelpScreen';
+import TestScreen from './src/screens/TestScreen';
+import OldUserPasswordScreen from './src/screens/OldUserPasswordScreen';
 import { useNavigation } from '@react-navigation/native';
 
 
@@ -71,12 +73,6 @@ function App({navigation}) {
           name="LoginMain"
           component={LoginMainScreen}
           options={{
-            // title: ' ',
-            // headerShadowVisible: false,
-            // headerLeft: ((props) => <CloseButton {...props} />),
-            // headerStyle: {
-            //   backgroundColor: 'transparent',
-            // }
             headerShown: false
           }}
 
@@ -113,6 +109,23 @@ function App({navigation}) {
               backgroundColor: 'transparent',
             }
           })}/>
+          <Stack.Screen 
+          name="OldUserPassword"
+          component={OldUserPasswordScreen} 
+          options={({route}) => ({
+            title: route.params.title,
+            title: '  Login',
+            headerTitleStyle: {
+              fontWeight: '700',
+              fontSize: 18,
+              color: '#003034'
+            },
+            headerShadowVisible: false,
+            headerLeft: ((props) => <BackButton {...props} />),
+            headerStyle: {
+              backgroundColor: 'transparent',
+            }
+          })}/>
 
           <Stack.Screen 
           name="Help" 
@@ -130,7 +143,6 @@ function App({navigation}) {
               backgroundColor: 'transparent',
             }
           })}/>
-
         <Stack.Screen
           name="Address"
           component={AddressScreen} 
