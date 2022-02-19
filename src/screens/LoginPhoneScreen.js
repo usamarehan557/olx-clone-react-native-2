@@ -20,7 +20,7 @@ const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 
 
-const LoginEmailScreen = ({route, navigation}) => {
+const LoginPhoneScreen = ({route, navigation}) => {
   const { title, tagline, subTagline } = route.params;
   const [email, setEmail] = useState();
   const [validation, setValidation] = useState(false);
@@ -79,14 +79,17 @@ return (
             style={{margin: 5, height: 80, width: 80}}
           />
             <Text style={styles.tagline}>
-                Enter your email
+                Enter your phone
+            </Text>
+            <Text style={styles.subtagline}>
+                We will send a confirmation code to your phone
             </Text>
 
             <TextInput
                 onBlur={() => onBlur()}
                 onFocus={() => onFocus()}
                 style={[styles.InputForm,{ borderColor: bColor}]}
-                placeholder="Email"
+                placeholder="Phone Number"
                 onChangeText={(text) => validate(text)}
             />
             <Text
@@ -116,10 +119,13 @@ return (
 
 const styles = StyleSheet.create({
   tagline: {
-    fontFamily: 'sans-serif',
     fontSize: 23,
     color: '#003034',
     fontWeight: '700',
+    marginLeft: 15,
+    marginTop: 10
+  },
+  subtagline:{
     marginLeft: 15,
     marginTop: 10
   },
@@ -135,7 +141,7 @@ const styles = StyleSheet.create({
     height: 50,
     width: Width / 1.08,
     alignSelf: 'center',
-    marginTop: 25,
+    marginTop: 20,
     marginBottom: 5
   },
   button: {
@@ -160,4 +166,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default LoginEmailScreen;
+export default LoginPhoneScreen;

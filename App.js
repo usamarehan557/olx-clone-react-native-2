@@ -22,6 +22,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SplashScreen from 'react-native-splash-screen';
 import LoginEmailScreen from './src/screens/LoginEmailScreen';
 import LoginMainScreen from './src/screens/LoginMainScreen';
+import LoginPhoneScreen from './src/screens/LoginPhoneScreen';
 import AddressScreen from './src/screens/AddressScreen';
 import HelpScreen from './src/screens/HelpScreen';
 import { useNavigation } from '@react-navigation/native';
@@ -83,8 +84,8 @@ function App({navigation}) {
         <Stack.Screen 
           name="LoginEmail"
           component={LoginEmailScreen} 
-          options={{
-            title: 'Login',
+          options={({route}) => ({
+            title: route.params.title,
             headerTitleStyle: {
               fontWeight: '700',
               fontSize: 18,
@@ -95,7 +96,23 @@ function App({navigation}) {
             headerStyle: {
               backgroundColor: 'transparent',
             }
-          }}/>
+          })}/>
+        <Stack.Screen 
+          name="LoginPhone"
+          component={LoginPhoneScreen} 
+          options={({route}) => ({
+            title: route.params.title,
+            headerTitleStyle: {
+              fontWeight: '700',
+              fontSize: 18,
+              color: '#003034'
+            },
+            headerShadowVisible: false,
+            headerLeft: ((props) => <BackButton {...props} />),
+            headerStyle: {
+              backgroundColor: 'transparent',
+            }
+          })}/>
 
           <Stack.Screen 
           name="Help" 

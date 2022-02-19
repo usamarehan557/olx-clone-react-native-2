@@ -98,7 +98,7 @@ function LoginMainScreen({navigation}) {
                 <TouchableOpacity
                   onPress={() => {
                     navigation.navigate('LoginEmail', {
-                      title: 'Login',
+                      title: '  Login',
                       tagline: 'Enter your email',
                       subTagline: ''
                     });
@@ -120,10 +120,8 @@ function LoginMainScreen({navigation}) {
 
                 <TouchableOpacity 
                   onPress={() => {
-                    navigation.navigate('LoginInput', {
-                      title: 'Login',
-                      tagline: 'Enter your phone',
-                      subTagline: 'We will send a confirmation code to your phone.'
+                    navigation.navigate('LoginPhone', {
+                      title: '  Login',
                     });
                   }}
                   style={{marginBottom: Height * 0.23}}>
@@ -144,7 +142,7 @@ function LoginMainScreen({navigation}) {
                   <Text 
                     onPress={() => {
                       navigation.navigate('Help', {
-                        title: 'Help',
+                        title: '  Help',
                       });
                     }}
                     style={{textDecorationLine: 'underline'}}>
@@ -154,7 +152,7 @@ function LoginMainScreen({navigation}) {
                   <Text
                   onPress={() => {
                     navigation.navigate('Help', {
-                      title: 'Privacy Policy',
+                      title: '  Privacy Policy',
                     });
                   }}
                   style={{textDecorationLine: 'underline'}}>
@@ -169,49 +167,47 @@ function LoginMainScreen({navigation}) {
 
 
 const styles = StyleSheet.create({
-    buttonView: {
-        margin: 10,
-    },
-    inputView:{
-        width: '100%',
-        height: '80%',
-    },
-
-    input: {
-        height: 40,
-        width: '90%',
-        marginVertical: 40,
-        borderWidth: 1,
-        padding: 10,
-    },
-    PrivacyPolicy: {
-      fontSize: 14,
-      fontWeight: '500',
-      color: '#001115',
-      marginBottom: 30,
-      textAlign: 'center',
-    },
-    button: {
-      flexDirection: 'row',
-      borderColor: '#001115',
-      borderRadius: 5,
+  buttonView: {
+    margin: 10,
+  },
+  inputView:{
+    width: '100%',
+    height: '80%',
+  },
+  input: {
+      height: 40,
+      width: '90%',
+      marginVertical: 40,
       borderWidth: 1,
-      // paddingRight: 15,
-      justifyContent: 'center',
-      width:  "100%",
-      height: 45,
-    },
-    buttonText: {
-      fontWeight: 'bold',
-      color: '#001115',
-    },
-    buttonIcon: {
-      width: 18,
-      height: 18,
-      marginRight: 20,
-      alignSelf: 'flex-end',
-    },
-
+      padding: 10,
+  },
+  PrivacyPolicy: {
+    fontSize: 14,
+    fontWeight: '500',
+    color: '#001115',
+    marginBottom: 30,
+    textAlign: 'center',
+  },
+  button: {
+    flexDirection: 'row',
+    borderColor: '#001115',
+    borderRadius: 5,
+    borderWidth: 1,
+    // paddingRight: 15,
+    justifyContent: 'center',
+    width:  "100%",
+    height: 45,
+  },
+  buttonText: {
+    fontWeight: 'bold',
+    color: '#001115',
+  },
+  buttonIcon: {
+    width: 18,
+    height: 18,
+    marginRight: 20,
+    alignSelf: 'flex-end',
+  },
 })
 
 
