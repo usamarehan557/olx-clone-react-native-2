@@ -63,6 +63,8 @@ const onFocus = () => {
     setBordercolor('cyan');
 }
 
+const passwordRoute = (phoneNo === '03335186180') ? 'OldUserPassword' : 'NewUserPassword';
+
 
 
 return (
@@ -114,11 +116,12 @@ return (
         <TouchableOpacity
         disabled={!validation}
         onPress={() => {
-          navigation.navigate('OldUserPassword', {
+          navigation.navigate(passwordRoute, {
             title: '  Login',
-            phone: phoneNo
+            data: "+92" + phoneNo
           });
         }}
+        // onPress={() => console.log(passwordRoute)}
         style={[styles.button,{ backgroundColor: buttonColor}]}>
                 <Text style={[styles.buttonText, {color: buttonTextColor}]}>Next</Text>
         </TouchableOpacity>
@@ -171,7 +174,7 @@ const styles = StyleSheet.create({
   },
   InputForm: {
     // height: 50,
-    // width: Width / 1.08,
+    width: "80%",
     alignSelf: 'center',
     // marginTop: 5,
     // marginBottom: 5

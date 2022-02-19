@@ -18,85 +18,115 @@ const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 
 
-const OldUserPasswordScreen = ({route, navigation}) => {
+const NewUserPasswordScreen = ({route, navigation}) => {
   const { title, data } = route.params;
-  const [email, setEmail] = useState();
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [hidepassword, setHidepassword] = useState(true);
+  const [hideconfirmpassword, setHideconfirmpassword] = useState(true);
   const [validation, setValidation] = useState(false);
   const [errormsg, setErrormsg] = useState('');
-  const [bordercolor, setBordercolor] = useState('#003034');
+  const [missmatcherror, setMissmatcherror] = useState('');
+  const [borderOnecolor, setBorderOnecolor] = useState('#003034');
+  const [borderTwocolor, setBorderTwocolor] = useState('#003034');
   const [buttonColor, setButtonColor] = useState('#E3E3E3');
   const [buttonTextColor, setButtonTextColor] = useState('#cccccc');
 
 
 
 const validate = (text) => {
-  let reg = /^([0-9]{10,11})+$/;
+  let reg = /^(?=.*[0-9])(?=.*[a-z]).{6,20}$/;
   if (text.length === 0) {
     setErrormsg("Field should not be empty");
-    setBordercolor('red');
+    setBorderOnecolor('red');
     setButtonColor('#E3E3E3');
     setButtonTextColor('#cccccc');
     setValidation(false);
-  } 
-//   else if (reg.test(text) === false) {
-//     setErrormsg("This phone number is not valid");
-//     setValidation(false);
-//     setBordercolor('red');
-//     setButtonColor('#E3E3E3');
-//     setButtonTextColor('#cccccc');
-//   } 
-  else {
+  } else if (text.length < 6) {
+    setErrormsg("Password is too short. It should be at least 6 character long");
+    setBorderOnecolor('red');
+    setButtonColor('#E3E3E3');
+    setButtonTextColor('#cccccc');
+    setValidation(false);
+  } else if (reg.test(text) === false) {
+    setErrormsg("Password must include a number and a letter");
+    setValidation(false);
+    setBorderOnecolor('red');
+    setButtonColor('#E3E3E3');
+    setButtonTextColor('#cccccc');
+  } else {
     setErrormsg("");
     setValidation(true);
-    setBordercolor('cyan');
+    setBorderOnecolor('cyan');
     setButtonColor('#003034');
     setButtonTextColor('white');
+    setPassword(text);
   }
 }
 
-const onBlur = () => {
-  {(errormsg == "Field should not be empty") ?
-  (setBordercolor('red')) : (setBordercolor('#003034'))}
-}
-const onFocus = () => {
-    if(bordercolor !== 'red') {
-        setBordercolor('cyan');
+const match = (text) => {
+    if (text.length === 0) {
+        setMissmatcherror('Field should not be empty');
+        setBorderTwocolor('red');
+    } else if(text !== password) {
+        setMissmatcherror('Password does not match');
+        setBorderTwocolor('red');
+    } else {
+        setMissmatcherror('');
+        setBorderTwocolor('cyan');
     }
 }
+
+const onBlurOne = () => {
+  {(errormsg == "Field should not be empty") ?
+  (setBorderOnecolor('red')) : (setBorderOnecolor('#003034'))}
+}
+const onFocusOne = () => {
+    setBorderOnecolor('cyan');
+}
+
+const onBlurTwo = () => {
+    {(errormsg == "Field should not be empty") ?
+    (setBorderTwocolor('red')) : (setBorderTwocolor('#003034'))}
+  }
+  const onFocusTwo = () => {
+      setBorderTwocolor('cyan');
+  }
 
 
 
 return (
-  <View style={{
+  <View style={{ 
       flex: 1,
+    //   flexDirection:'row',
       alignItems: 'center',
       justifyContent: 'flex-end' 
       }}>
 
 
       <ScrollView style={styles.scrollView}>
-          <Image 
+          {/* <Image 
             source={require('../assets/avatar.png')}
             style={{margin: 5, height: 80, width: 80}}
-          />
+          /> */}
             <Text style={styles.tagline}>
-                Enter your password
+                Create a password
             </Text>
             <Text style={styles.subtagline}>
-                Welcome back <Text style={{fontWeight: 'bold'}}>{data}</Text>
+                You are creating password for <Text style={{fontWeight: 'bold'}}>{data}.</Text>
+                This will help you login faster next time.
             </Text>
 
-            <View style={[styles.inputView, {borderColor: bordercolor,}]}>
+            <View style={[styles.inputView, {borderColor: borderOnecolor,}]}>
                 
                 <TextInput
-                    onBlur={() => onBlur()}
-                    onFocus={() => onFocus()}
+                    onBlur={() => onBlurOne()}
+                    onFocus={() => onFocusOne()}
                     maxLength={20}
                     secureTextEntry={hidepassword}
                     style={styles.InputForm}
                     placeholder="Password"
-                    onChangeText={(text) => validate(text)}
+                    onChangeText={(textOne) => validate(textOne)}
                 />
                 <TouchableOpacity
                     onPress={() => {hidepassword? setHidepassword(false) : setHidepassword(true)}}
@@ -109,13 +139,35 @@ return (
                 </TouchableOpacity>
             </View>
 
-            
-            <Text style={{color: 'red', marginLeft: 20}}>
+            <Text style={{color: 'red', marginLeft: 15, fontSize: 13}}>
                 {errormsg}
             </Text>
 
-            <Text style={styles.otherAddress}>
-                forgot your password?
+            <View style={[styles.inputView, {borderColor: borderTwocolor,}]}>
+                
+                <TextInput
+                    onBlur={() => onBlurTwo()}
+                    onFocus={() => onFocusTwo()}
+                    maxLength={20}
+                    secureTextEntry={hideconfirmpassword}
+                    style={styles.InputForm}
+                    placeholder="Confirm new Password"
+                    onChangeText={(textTwo) => match(textTwo)}
+                />
+                <TouchableOpacity
+                    onPress={() => {hideconfirmpassword? setHideconfirmpassword(false) : setHideconfirmpassword(true)}}
+                    style={{justifyContent: 'center', paddingHorizontal: 10}}
+                >
+                    <Image 
+                        source={require("../assets/eye.png")}
+                        style={styles.eye}
+                    />
+                </TouchableOpacity>
+            </View>
+
+            
+            <Text style={{color: 'red', marginLeft: 20}}>
+                {missmatcherror}
             </Text>
 
       </ScrollView>
@@ -137,7 +189,7 @@ return (
 
 const styles = StyleSheet.create({
   tagline: {
-    fontSize: 23,
+    fontSize: 30,
     color: '#003034',
     fontWeight: '700',
     marginLeft: 15,
@@ -148,6 +200,7 @@ const styles = StyleSheet.create({
     marginTop: 10
   },
   scrollView:{
+      paddingTop: '10%',
       width: '100%',
       height: '80%',
       backgroundColor: 'white'
@@ -160,9 +213,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginLeft: 15,
     marginTop: 20,
-    paddingLeft: 15
+    paddingHorizontal: 15
   },
   eye: {
+    alignSelf: 'center',
     height: 22.5, width: 22.5
   },
   verticleLine: {
@@ -209,4 +263,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default OldUserPasswordScreen;
+export default NewUserPasswordScreen;

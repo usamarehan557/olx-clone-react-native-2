@@ -27,6 +27,7 @@ import AddressScreen from './src/screens/AddressScreen';
 import HelpScreen from './src/screens/HelpScreen';
 import TestScreen from './src/screens/TestScreen';
 import OldUserPasswordScreen from './src/screens/OldUserPasswordScreen';
+import NewUserPasswordScreen from './src/screens/NewUserPasswordScreen';
 import { useNavigation } from '@react-navigation/native';
 
 
@@ -126,6 +127,12 @@ function App({navigation}) {
               backgroundColor: 'transparent',
             }
           })}/>
+          <Stack.Screen 
+          name="NewUserPassword"
+          component={NewUserPasswordScreen} 
+          options={{
+            headerShown: false
+          }}/>
 
           <Stack.Screen 
           name="Help" 
