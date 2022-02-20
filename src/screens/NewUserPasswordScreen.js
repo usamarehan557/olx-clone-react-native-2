@@ -184,7 +184,7 @@ return (
         onPress={() => {
           navigation.navigate(Otproute, {
             title: '  Login',
-            data: "data=" + data
+            data: data
           });
         }}
         style={[styles.button,{ backgroundColor: buttonColor}]}>

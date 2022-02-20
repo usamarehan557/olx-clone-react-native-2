@@ -114,8 +114,7 @@ function App({navigation}) {
           <Stack.Screen 
           name="OldUserPassword"
           component={OldUserPasswordScreen} 
-          options={({route}) => ({
-            title: route.params.title,
+          options={{
             title: '  Login',
             headerTitleStyle: {
               fontWeight: '700',
@@ -127,7 +126,7 @@ function App({navigation}) {
             headerStyle: {
               backgroundColor: 'transparent',
             }
-          })}/>
+          }}/>
           <Stack.Screen 
           name="NewUserPassword"
           component={NewUserPasswordScreen} 
@@ -138,8 +137,18 @@ function App({navigation}) {
             name="Otp"
             component={OtpScreen} 
             options={{
-              headerShown: false
-          }}/>
+              title: '  Login',
+              headerTitleStyle: {
+                fontWeight: '700',
+                fontSize: 18,
+                color: '#003034'
+              },
+              headerShadowVisible: false,
+              headerLeft: ((props) => <BackButton {...props} />),
+              headerStyle: {
+                backgroundColor: 'transparent',
+              }
+            }}/>
           <Stack.Screen 
             name="Home"
             component={HomeScreen} 
