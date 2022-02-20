@@ -19,7 +19,7 @@ const Height = Dimensions.get('window').height;
 
 
 const OldUserPasswordScreen = ({route, navigation}) => {
-  const { title, data } = route.params;
+  const { title, data, fromEmail } = route.params;
   const [email, setEmail] = useState();
   const [hidepassword, setHidepassword] = useState(true);
   const [validation, setValidation] = useState(false);
@@ -28,7 +28,7 @@ const OldUserPasswordScreen = ({route, navigation}) => {
   const [buttonColor, setButtonColor] = useState('#E3E3E3');
   const [buttonTextColor, setButtonTextColor] = useState('#cccccc');
 
-
+  console.log(fromEmail);
 
 const validate = (text) => {
   let reg = /^([0-9]{10,11})+$/;
@@ -126,6 +126,12 @@ return (
     <View style={styles.buttonView}>
         <TouchableOpacity
         disabled={!validation}
+        onPress={() => {
+          navigation.navigate("Home", {
+            title: '  Login',
+            data: "+92"
+          });
+        }}
         style={[styles.button,{ backgroundColor: buttonColor}]}>
                 <Text style={[styles.buttonText, {color: buttonTextColor}]}>Next</Text>
         </TouchableOpacity>

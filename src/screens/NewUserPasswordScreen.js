@@ -19,7 +19,7 @@ const Height = Dimensions.get('window').height;
 
 
 const NewUserPasswordScreen = ({route, navigation}) => {
-  const { title, data } = route.params;
+  const { title, data, fromEmail } = route.params;
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [hidepassword, setHidepassword] = useState(true);
@@ -31,6 +31,8 @@ const NewUserPasswordScreen = ({route, navigation}) => {
   const [borderTwocolor, setBorderTwocolor] = useState('#003034');
   const [buttonColor, setButtonColor] = useState('#E3E3E3');
   const [buttonTextColor, setButtonTextColor] = useState('#cccccc');
+
+ const Otproute = fromEmail ? 'Otp' : 'Home';
 
 
 
@@ -56,10 +58,7 @@ const validate = (text) => {
     setButtonTextColor('#cccccc');
   } else {
     setErrormsg("");
-    setValidation(true);
     setBorderOnecolor('cyan');
-    setButtonColor('#003034');
-    setButtonTextColor('white');
     setPassword(text);
   }
 }
@@ -74,6 +73,10 @@ const match = (text) => {
     } else {
         setMissmatcherror('');
         setBorderTwocolor('cyan');
+        setValidation(true);
+        setButtonColor('#003034');
+        setButtonTextColor('white');
+        setConfirmPassword(text);
     }
 }
 
@@ -114,7 +117,7 @@ return (
             </Text>
             <Text style={styles.subtagline}>
                 You are creating password for <Text style={{fontWeight: 'bold'}}>{data}.</Text>
-                This will help you login faster next time.
+                {' '}This will help you login faster next time.
             </Text>
 
             <View style={[styles.inputView, {borderColor: borderOnecolor,}]}>
@@ -178,6 +181,12 @@ return (
     <View style={styles.buttonView}>
         <TouchableOpacity
         disabled={!validation}
+        onPress={() => {
+          navigation.navigate(Otproute, {
+            title: '  Login',
+            data: "data=" + data
+          });
+        }}
         style={[styles.button,{ backgroundColor: buttonColor}]}>
                 <Text style={[styles.buttonText, {color: buttonTextColor}]}>Next</Text>
         </TouchableOpacity>
@@ -196,7 +205,7 @@ const styles = StyleSheet.create({
     marginTop: 10
   },
   subtagline:{
-    marginLeft: 15,
+    marginHorizontal: 15,
     marginTop: 10
   },
   scrollView:{

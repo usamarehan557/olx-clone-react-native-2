@@ -118,7 +118,8 @@ return (
         onPress={() => {
           navigation.navigate(passwordRoute, {
             title: '  Login',
-            data: "+92" + phoneNo
+            data: "+92" + phoneNo,
+            fromEmail: false
           });
         }}
         // onPress={() => console.log(passwordRoute)}

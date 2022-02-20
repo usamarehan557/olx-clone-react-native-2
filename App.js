@@ -25,7 +25,8 @@ import LoginMainScreen from './src/screens/LoginMainScreen';
 import LoginPhoneScreen from './src/screens/LoginPhoneScreen';
 import AddressScreen from './src/screens/AddressScreen';
 import HelpScreen from './src/screens/HelpScreen';
-import TestScreen from './src/screens/TestScreen';
+import OtpScreen from './src/screens/OtpScreen';
+import HomeScreen from './src/screens/HomeScreen';
 import OldUserPasswordScreen from './src/screens/OldUserPasswordScreen';
 import NewUserPasswordScreen from './src/screens/NewUserPasswordScreen';
 import { useNavigation } from '@react-navigation/native';
@@ -132,6 +133,18 @@ function App({navigation}) {
           component={NewUserPasswordScreen} 
           options={{
             headerShown: false
+          }}/>
+          <Stack.Screen 
+            name="Otp"
+            component={OtpScreen} 
+            options={{
+              headerShown: false
+          }}/>
+          <Stack.Screen 
+            name="Home"
+            component={HomeScreen} 
+            options={{
+              headerShown: false
           }}/>
 
           <Stack.Screen 

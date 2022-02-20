@@ -51,6 +51,7 @@ const validate = (text) => {
     setBColor('#003034');
     setButtonColor('#003034');
     setButtonTextColor('white');
+    setEmail(text);
   }
 }
 
@@ -62,7 +63,7 @@ const onFocus = () => {
   setBColor('cyan');
 }
 
-
+const passwordRoute = (email === 'usamarehan557@gmail.com') ? 'OldUserPassword' : 'NewUserPassword';
 
 return (
   <View style={{ 
@@ -98,6 +99,13 @@ return (
     <View style={styles.buttonView}>
         <TouchableOpacity
         disabled={!validation}
+        onPress={() => {
+          navigation.navigate(passwordRoute, {
+            title: '  Login',
+            data: email,
+            fromEmail: true
+          });
+        }}
         style={[styles.button,{ backgroundColor: buttonColor}]}>
                 <Text style={[styles.buttonText, {color: buttonTextColor}]}>Next</Text>
         </TouchableOpacity>
