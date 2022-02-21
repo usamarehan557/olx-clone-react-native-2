@@ -114,7 +114,17 @@ return (
                 {errormsg}
             </Text>
 
-            <Text style={styles.otherAddress}>
+            <Text 
+              style={styles.forgotpassword}
+              onPress={() => {
+                navigation.navigate('Otp', {
+                  title: '  Login',
+                  tagline: 'Welcome back',
+                  data: data,
+                  fromEmail: fromEmail
+                });
+              }}
+              >
                 forgot your password?
             </Text>
 
@@ -187,7 +197,7 @@ const styles = StyleSheet.create({
     // marginTop: 5,
     // marginBottom: 5
   },
-  otherAddress: {
+  forgotpassword: {
     fontWeight: '700',
     color: '#4286f4',
     marginLeft: 15,

@@ -184,6 +184,7 @@ return (
         onPress={() => {
           navigation.navigate(Otproute, {
             title: '  Login',
+            tagline: 'Enter your confirmation code',
             data: data
           });
         }}
