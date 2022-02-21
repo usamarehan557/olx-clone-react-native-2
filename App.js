@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -38,6 +38,8 @@ const Stack = createNativeStackNavigator();
 
 function BackButton() {
   const navigation = useNavigation();
+
+
   return(
     <TouchableOpacity onPress={() => navigation.goBack()}>
       <Image 
@@ -61,6 +63,10 @@ function CloseButton() {
 }
 
 function App({navigation}) {
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  
 
   useEffect(() => 
   // do stuff while splash screen is shown

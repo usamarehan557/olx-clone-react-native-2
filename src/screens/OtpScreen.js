@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
     SafeAreaView,
     ScrollView,
@@ -10,13 +10,16 @@ import {
     View,
     TextInput,
     Dimensions,
-    Image
+    Image,
+    BackHandler,
+    Alert
 } from 'react-native';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
 
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 
+var interval;
 
 function OtpScreen({route, navigation}) {
     const { title, data, fromEmail, tagline } = route.params;
@@ -25,9 +28,6 @@ function OtpScreen({route, navigation}) {
     const [resendColor, setResendColor] = useState('#003034');
     const [timerCount, setTimer] = useState(5);
     const [otpMsg, setOtpMsg] = useState(false);
-  
-  
-  
     const resendOtp = () => {
         setResend(true);
         setResendColor('#cccccc');
@@ -35,15 +35,13 @@ function OtpScreen({route, navigation}) {
         setTimeout(disbaleforMinute, 5000);
         setOtpMsg(true);
     }
-
     const disbaleforMinute = () => {
         setResendColor('#003034');
         setResend(false);
         setTimer(5);
     }
-
     const startTimer = () => {
-        let interval = setInterval(() => {
+        interval = setInterval(() => {
         setTimer(lastTimerCount => {
         lastTimerCount <= 1 && clearInterval(interval)
         return lastTimerCount - 1
@@ -53,6 +51,17 @@ function OtpScreen({route, navigation}) {
         return () => clearInterval(interval)
     }
 
+    useEffect(() => {
+        const backAction = () => {
+            clearInterval(interval);
+            navigation.goBack();
+        };
+        const backHandler = BackHandler.addEventListener(
+          "hardwareBackPress",
+          backAction
+        );
+        return () => backHandler.remove();
+    }, []);
 
   
 

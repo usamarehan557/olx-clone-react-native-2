@@ -159,8 +159,9 @@ const styles = StyleSheet.create({
     paddingLeft: 10
   },
   flag: {
-    backgroundColor: 'red',
+    backgroundColor: 'green',
     alignSelf: 'center',
+    color: 'white'
     // marginTop: 20,
     // marginBottom: 5
   },
