@@ -1,43 +1,35 @@
-// import React from 'react';
-// import { View, Text, StyleSheet, PixelRatio, Switch } from 'react-native';
-// import CountryPicker from 'react-native-country-picker-modal';
-// import { CountryCode, Country } from '../components/src/types';
-
-// function TestScreen(props) {
-
-// const [countryCode, setCountryCode] = useState<CountryCode>('FR');
-// const [country, setCountry] = useState<Country>(null);
-// const [withCountryNameButton, setWithCountryNameButton] = useState<boolean>(false);
-// const [withFlag, setWithFlag] = useState<boolean>(true);
-// const [withEmoji, setWithEmoji] = useState<boolean>(true);
-// const [withFilter, setWithFilter] = useState<boolean>(true);
-// const [withAlphaFilter, setWithAlphaFilter] = useState<boolean>(false);
-// const [withCallingCode, setWithCallingCode] = useState<boolean>(false);
-// const onSelect = (country) => {
-//     setCountryCode(country.cca2)
-//     setCountry(country)
-// }
-
-
-//     return (
-//         <View>
-//             <Text>
-//                 TestScreen
-//             </Text>
-//         </View>
-//     );
-// }
-
-// export default TestScreen;
-
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text } from 'react-native';
+import CountryPicker from 'react-native-country-picker-modal';
 
 function TestScreen(props) {
+const [countryCode, setCountryCode] = useState('PK');
+const [callingCode, setCallingCode] = useState('92');
+
+
     return (
-        <View>
+        <View style={{backgroundColor: 'white'}}>
 
             <Text>Test   Screen</Text>
+
+            <CountryPicker 
+                countryCode={countryCode}
+                withFlag
+                withAlphaFilter={false}
+                withCurrencyButton={false}
+                withCallingCode
+                withCallingCodeButton
+                onSelect={country => {
+                    console.log('country', country);
+                    const {cca2, callingCode} = country;
+                    setCountryCode(cca2);
+                    setCallingCode(callingCode[0]);
+                }}
+                containerButtonStyle={{
+                    // alignItems: 'center',
+                    marginLeft: 10,
+                }}
+            />
         </View>
     );
 }

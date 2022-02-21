@@ -93,12 +93,12 @@ return (
                 codeInputFieldStyle={styles.codeBase}
                 codeInputHighlightStyle={styles.codeHighLighted}
                 onCodeFilled = {(code => {
-                    console.log(`Code is ${code}, you are good to go!`);
-                    navigation.navigate('NewUserPassword', {
-                        title: '  Login',
-                        data: data,
-                        fromEmail: false
-                      });
+                console.log(`Code is ${code}, you are good to go!`);
+                navigation.navigate('NewUserPassword', {
+                    title: '  Login',
+                    data: data,
+                    fromEmail: false
+                    });
             })}/>
 
         </View>

@@ -12,8 +12,7 @@ import {
     Dimensions,
     Image
 } from 'react-native';
-
-import header from '../components/header';
+import CountryPicker from 'react-native-country-picker-modal';
 
 
 const Width = Dimensions.get('window').width;
@@ -28,7 +27,8 @@ const LoginPhoneScreen = ({route, navigation}) => {
   const [bordercolor, setBordercolor] = useState('#003034');
   const [buttonColor, setButtonColor] = useState('#E3E3E3');
   const [buttonTextColor, setButtonTextColor] = useState('#cccccc');
-
+  const [countryCode, setCountryCode] = useState('PK');
+  const [callingCode, setCallingCode] = useState('92');
 
 
 const validate = (text) => {
@@ -89,16 +89,30 @@ return (
             </Text>
 
             <View style={[styles.inputView, {borderColor: bordercolor,}]}>
-                <Text 
-                    style={styles.flag}
-                    onPress={() => navigation.navigate('Test')}
-                >+92  </Text>
+              <CountryPicker 
+                  countryCode={countryCode}
+                  withFlag
+                  withAlphaFilter={false}
+                  withCurrencyButton={false}
+                  withCallingCode
+                  withCallingCodeButton
+                  onSelect={country => {
+                      console.log('country', country);
+                      const {cca2, callingCode} = country;
+                      setCountryCode(cca2);
+                      setCallingCode(callingCode[0]);
+                      console.log(callingCode[0]);
+                  }}
+                  containerButtonStyle={{
+                      marginTop: 9,
+                  }}
+              />
                 <View style={styles.verticleLine}></View>
                 <TextInput
                     onBlur={() => onBlur()}
                     onFocus={() => onFocus()}
                     keyboardType={'phone-pad'}
-                    maxLength={11}
+                    maxLength={14}
                     style={styles.InputForm}
                     placeholder="Phone Number"
                     onChangeText={(text) => validate(text)}
@@ -118,7 +132,7 @@ return (
         onPress={() => {
           navigation.navigate(passwordRoute, {
             title: '  Login',
-            data: "+92" + phoneNo,
+            data: "+" + callingCode + phoneNo,
             fromEmail: false
           });
         }}
