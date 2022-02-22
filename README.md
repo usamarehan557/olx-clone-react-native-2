@@ -3,11 +3,11 @@ This is olx android app clone made with react native
 
 I used following tech pieces in his project:
 
-react-native-splash-screen
-react-navigation
-stack navigator
-params
-custom header
-react-native-webview
-react-native-c
-react-native-otp-input
+react-native-splash-screen <br>
+react-navigation/
+stack navigator/
+params/
+custom header/
+react-native-webview/
+react-native-c/
+react-native-otp-input/
