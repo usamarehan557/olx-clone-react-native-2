@@ -12,7 +12,8 @@ import {
     Dimensions,
     Image
 } from 'react-native';
-
+import { login, logout} from '../redux/loginState';
+import { useSelector, useDispatch } from 'react-redux';
 
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
@@ -27,8 +28,7 @@ const OldUserPasswordScreen = ({route, navigation}) => {
   const [bordercolor, setBordercolor] = useState('#003034');
   const [buttonColor, setButtonColor] = useState('#E3E3E3');
   const [buttonTextColor, setButtonTextColor] = useState('#cccccc');
-
-  console.log(fromEmail);
+  const dispatch = useDispatch();
 
 const validate = (text) => {
   let reg = /^([0-9]{10,11})+$/;
@@ -136,12 +136,7 @@ return (
     <View style={styles.buttonView}>
         <TouchableOpacity
         disabled={!validation}
-        onPress={() => {
-          navigation.navigate("Home", {
-            title: '  Login',
-            data: "+92"
-          });
-        }}
+        onPress={() => dispatch(login())}
         style={[styles.button,{ backgroundColor: buttonColor}]}>
                 <Text style={[styles.buttonText, {color: buttonTextColor}]}>Next</Text>
         </TouchableOpacity>

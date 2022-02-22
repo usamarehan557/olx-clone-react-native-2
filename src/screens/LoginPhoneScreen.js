@@ -118,8 +118,6 @@ return (
                     onChangeText={(text) => validate(text)}
                 />
             </View>
-
-            
             <Text
             style={{color: 'red', marginLeft: 20}}>{errormsg}</Text>
       </ScrollView>

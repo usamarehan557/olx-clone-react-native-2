@@ -14,35 +14,43 @@ Platform
 } from 'react-native';
 import { WebView } from 'react-native-webview';
 
-function HelpScreen({ route, navigation }) {
+function errorWindow() {
+    return (
+        <View  style={{height: '100%', justifyContent: 'center', alignItems: 'center'}}>
+            <Text>Something went wrong</Text>
+        </View>
+    )
+}
+
+
+function HelpScreen({ route }) {
     const [loading, setLoading] = useState(true);
-    const { title } = route.params;
 
     return (
         <KeyboardAvoidingView
             behavior={Platform.OS === "ios" ? "padding" : "height"}
             style={styles.container}>
-			<View
-				style={{
-				flexDirection: "column",
-				height: '100%',
-			}}>
-                    <View style={{flex: 1 }}>
 
-                        {loading === true ? (
-                            <View style={{alignContent: 'center', justifyContent: 'center', height: "100%"}}>
-                                <ActivityIndicator style={{alignSelf: 'center'}} size="large" color="#003034"/>
-                            </View>
-                        ) :
-                        (
-                            <View></View>
-                        )}
+			<View style={{flexDirection: "column",height: '100%'}}>
+                <View style={{flex: 1 }}>
 
-                        <WebView
-                            onLoad={() => setLoading(false)}
-                            source={{ uri: 'https://help.olx.com.pk/hc/en-us' }} 
-                        />
-                    </View>   
+                    {loading === true ? (
+                        <View style={{alignContent: 'center', justifyContent: 'center', height: "100%"}}>
+                            <ActivityIndicator style={{alignSelf: 'center'}} weight='500' size="small" color="#003034"/>
+                        </View>
+                    ) :
+                    (
+                        <View></View>
+                    )}
+
+                    <WebView
+                        // onError={(e) => console.log(e)}
+                        onLoad={() => setLoading(false)}
+                        source={{ uri: 'https://help.olx.com.pk/hc/en-us' }} 
+                    />
+
+                    
+                </View>   
             </View>
         </KeyboardAvoidingView>
     );

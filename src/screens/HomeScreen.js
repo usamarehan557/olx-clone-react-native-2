@@ -1,11 +1,61 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, Button, ScrollView} from 'react-native';
+
+import Header from '../components/header';
 
 
-function HomeScreen(props) {
+
+function HomeScreen({navigation}) {
     return (
         <View>
-            <Text>Home</Text>
+            <ScrollView
+                style={{}}
+                stickyHeaderIndices={[2]}
+            >
+                <View><Header /></View>
+                <View><Text>Hello2</Text></View>
+                <View><Text>Hello3</Text></View>
+                <View><Text>Hello3</Text></View>
+                <View><Text>Hello3</Text></View>
+                <View><Text>Hello3</Text></View>
+                <View><Text>Hello3</Text></View>
+                <View><Text>Hello3</Text></View>
+                <View><Text>Hello3</Text></View>
+                <View><Text>Hello3</Text></View>
+                <View><Text>Hello3</Text></View>
+                <View><Text>Hello3</Text></View>
+                <View><Text>Hello3</Text></View>
+                <View><Text>Hello3</Text></View>
+                <View><Text>Hello3</Text></View>
+                <View><Text>Hello3</Text></View>
+                <View><Text>Hello3</Text></View>
+                <View><Text>Hello3</Text></View>
+                <View><Text>Hello3</Text></View>
+                <View><Text>Hello3</Text></View>
+                <View><Text>Hello3</Text></View>
+                <View><Text>Hello3</Text></View>
+                <View><Text>Hello3</Text></View>
+                <View><Text>Hello3</Text></View>
+                <View><Text>Hello3</Text></View>
+                <View><Text>Hello3</Text></View>
+                <View><Text>Hello3</Text></View>
+                <View><Text>Hello3</Text></View>
+                <View><Text>Hello3</Text></View>
+                <View><Text>Hello3</Text></View>
+                <View><Text>Hello3</Text></View>
+                <View><Text>Hello3</Text></View>
+                <View><Text>Hello3</Text></View>
+                <View><Text>Hello3</Text></View>
+                <View><Text>Hello3</Text></View>
+                <View><Text>Hello3</Text></View>
+                <View><Text>Hello3</Text></View>
+                <View><Text>Hello3</Text></View>
+            </ScrollView>
+
+            <Button 
+                title='goto Profile'
+                onPress={() => navigation.navigate("Test")}
+            />
         </View>
     );
 }

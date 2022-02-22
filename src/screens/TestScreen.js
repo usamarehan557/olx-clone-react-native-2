@@ -1,35 +1,44 @@
 import React, { useState } from 'react';
-import { View, Text } from 'react-native';
-import CountryPicker from 'react-native-country-picker-modal';
+import { View, Text, Button } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
+import { increment, decrement} from '../redux/counter';
+import { login, logout} from '../redux/loginState';
 
 function TestScreen(props) {
-const [countryCode, setCountryCode] = useState('PK');
-const [callingCode, setCallingCode] = useState('92');
+    const { count } = useSelector((state) => state.counter);
+    const { LoginState } = useSelector((state) => state.LoginState);
+    // const count = useSelector((state) => state.counter.count);
+    const dispatch = useDispatch();
 
-
+    console.log(LoginState);
     return (
         <View style={{backgroundColor: 'white'}}>
 
             <Text>Test   Screen</Text>
 
-            <CountryPicker 
-                countryCode={countryCode}
-                withFlag
-                withAlphaFilter={false}
-                withCurrencyButton={false}
-                withCallingCode
-                withCallingCodeButton
-                onSelect={country => {
-                    console.log('country', country);
-                    const {cca2, callingCode} = country;
-                    setCountryCode(cca2);
-                    setCallingCode(callingCode[0]);
-                }}
-                containerButtonStyle={{
-                    // alignItems: 'center',
-                    marginLeft: 10,
-                }}
+            <Text>The count is : {count}</Text>
+
+            <Button 
+                title='increment'
+                onPress={() => dispatch(increment())}
             />
+            <Button 
+                title='decrement'
+                onPress={() => dispatch(decrement())}
+            />
+
+            {LoginState ? <Text>true</Text> : <Text>false</Text>}
+            
+
+            <Button 
+                title='login'
+                onPress={() => dispatch(login())}
+            />
+            <Button 
+                title='logout'
+                onPress={() => dispatch(logout())}
+            />
+
         </View>
     );
 }
