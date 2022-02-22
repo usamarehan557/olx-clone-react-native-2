@@ -12,3 +12,6 @@ react-native-webview<br>
 react-native-clipboard<br>
 react-native-otp-input<br>
 react-native-counry-picker-modal<br>
+react-redux<br>
+react-redux/toolkit<br>
+custom wrapper for app<br>
