@@ -1,6 +1,7 @@
 import React from 'react';
 import HomeScreen from '../screens/HomeScreen';
 import TestScreen from '../screens/TestScreen';
+import OlxpropertyScreen from '../screens/olxpropertyScreen';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
@@ -12,6 +13,12 @@ const AppStack = () => {
             <Stack.Screen 
             name="Home"
             component={HomeScreen} 
+            options={{
+                headerShown: false
+            }}/>
+            <Stack.Screen
+            name="Olxproperty"
+            component={OlxpropertyScreen} 
             options={{
                 headerShown: false
             }}/>
