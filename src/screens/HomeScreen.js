@@ -3,7 +3,6 @@ import {View, Text, ScrollView, TouchableOpacity, StyleSheet, Image, Modal, Text
 
 import Categoryball from '../components/categoryball';
 import AdCards from '../components/AdCards';
-import LocationModal from '../components/modals';
 
 
 function HomeScreen({navigation}) {

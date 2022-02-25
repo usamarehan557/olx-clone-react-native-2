@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    LoginState: false,
+    LoginState: true,
 }
 
 export const loginSlice = createSlice({

@@ -2,6 +2,7 @@ import React from 'react';
 import HomeScreen from '../screens/HomeScreen';
 import TestScreen from '../screens/TestScreen';
 import OlxpropertyScreen from '../screens/olxpropertyScreen';
+import Olxpropertylocationfilterscreen from '../screens/olxpropertylocationfilterscreen';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
@@ -9,7 +10,7 @@ const Stack = createNativeStackNavigator();
 
 const AppStack = () => {
     return (
-        <Stack.Navigator initialRouteName='Home'>
+        <Stack.Navigator initialRouteName='Olxproperty'>
             <Stack.Screen 
             name="Home"
             component={HomeScreen} 
@@ -22,6 +23,12 @@ const AppStack = () => {
             options={{
                 headerShown: false
             }}/>
+            <Stack.Screen
+                name="Olxpropertylocationfilter"
+                component={Olxpropertylocationfilterscreen} 
+                options={{
+                    headerShown: false
+                }}/>
             <Stack.Screen
             name="Test"
             component={TestScreen} 
