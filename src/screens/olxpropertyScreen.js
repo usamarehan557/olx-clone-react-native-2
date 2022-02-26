@@ -1,14 +1,43 @@
-import React , {useRef, useState} from 'react';
-import { View, Dimensions, Button, TouchableOpacity, Image, Text, StyleSheet, Animated, SafeAreaView, ImageBackground } from 'react-native';
+import React , {useRef, useState, useCallback} from 'react';
+import { 
+    View, TextInput,
+    Dimensions,
+    Button,
+    TouchableOpacity, ScrollView,
+    Image,
+    Text,
+    StyleSheet, Animated, SafeAreaView, ImageBackground } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import CustomSwitch from '../components/CustomSwitch';
 import Modal from "react-native-modal";
+import {RangeSlider, Rail, RailSelected, Label, Notch, Thumb} from 'rn-range-slider';
+
 
 const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
 
 
 function OlxpropertyScreen({navigation}) {
+
+    const renderRail = useCallback(() => <Rail/>, []);
+    const renderRailSelected = useCallback(() => <RailSelected/>, []);
+    const renderLabel = useCallback(value => <Label text={value}/>, []);
+    const renderNotch = useCallback(() => <Notch/>, []);
+    const renderThumb = useCallback(() => <Thumb/>, []);
+    const [low, setLow] = useState(0);
+    const [high, setHigh] = useState(250);
+
+    const [scrollEnabled, setScrollEnabled] = useState(false)
+
+
+    const enableScroll = () => setScrollEnabled(true);
+    const disableScroll = () => setScrollEnabled(false);
+
+    const handleValueChange = useCallback((low, high) => {
+        setLow(low);
+        setHigh(high);
+    }, []);
+
     const [isModaloneVisible, setModaloneVisible] = useState(false);
 
     const toggleModalone = () => {
@@ -152,6 +181,56 @@ function OlxpropertyScreen({navigation}) {
                                 </TouchableOpacity>
 
                             </View>
+
+                            <View style={{height: 40, marginVertical: 10, flexDirection: 'row', justifyContent: 'space-between'}}>
+                                <View 
+                                    style={{borderWidth: 1, width: '45%', flexDirection: 'row', alignItems: 'center',
+                                        borderRadius: 5, backgroundColor: 'white'}}>
+                                    <Image source={require('../assets/scale.png')} style={{height: 20, width: 20, marginLeft: 5}}/>
+                                    <TextInput 
+                                        keyboardType='numeric'
+                                        placeholder='Min'
+                                        onChangeText={(text) => console.log(text)}
+                                        style={{width: '80%'}}/>
+                                </View>
+                                
+                                <View 
+                                    style={{borderWidth: 1, width: '45%', flexDirection: 'row', alignItems: 'center',
+                                        borderRadius: 5, backgroundColor: 'white'}}>
+                                    <Image source={require('../assets/scale.png')} style={{height: 20, width: 20, marginLeft: 5}}/>
+                                    <TextInput 
+                                        keyboardType='numeric'
+                                        placeholder='Max'
+                                        onChangeText={(text) => console.log(text)}
+                                        style={{width: '80%'}}/>
+                                </View>
+
+                            </View>
+
+                            <View style={{width: '100%', marginLeft: 20}}>
+
+                                {/* <RangeSlider
+                                    style={{width: 160, height: 80}}
+                                    gravity={'center'}
+                                    renderThumb={renderThumb}
+                                    renderRail={renderRail}
+                                    renderRailSelected={renderRailSelected}
+                                    renderLabel={renderLabel}
+                                    renderNotch={renderNotch}
+                                    min={200}
+                                    max={1000}
+                                    step={20}
+                                    selectionColor="#3df"
+                                    blankColor="#f618"
+                                    onValueChanged={(low, high, fromUser) => {
+                                        setLow(low);
+                                        setHigh(high);
+                                }}/> */}
+
+                            </View>
+
+
+
 
 
                         </View>

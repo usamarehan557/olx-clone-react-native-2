@@ -63,7 +63,7 @@ const onFocus = () => {
     setBordercolor('cyan');
 }
 
-const passwordRoute = (phoneNo === '03335186180') ? 'OldUserPassword' : 'NewUserPassword';
+const passwordRoute = (phoneNo === '3311069907') ? 'OldUserPassword' : 'NewUserPassword';
 
 
 

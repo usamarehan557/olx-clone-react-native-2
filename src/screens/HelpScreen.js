@@ -36,7 +36,7 @@ function HelpScreen({ route }) {
 
                     {loading === true ? (
                         <View style={{alignContent: 'center', justifyContent: 'center', height: "100%"}}>
-                            <ActivityIndicator style={{alignSelf: 'center'}} weight='500' size="small" color="#003034"/>
+                            <ActivityIndicator style={{alignSelf: 'center'}} size="large" color="#003034"/>
                         </View>
                     ) :
                     (
