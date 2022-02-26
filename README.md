@@ -15,6 +15,12 @@ react-native-counry-picker-modal<br>
 react-redux<br>
 react-redux/toolkit<br>
 custom provider wrapper for app<br>
+react-native-modal<br>
+@react-navigation/material-top-tabs<br>
+react-native-tab-view<br>
+rn-range-slider<br>
+Custom Validation<br>
+
 
 <div style="flex-direction: row">
   <img src="screenshots/launchscreen.png" width="150" height="300" />
