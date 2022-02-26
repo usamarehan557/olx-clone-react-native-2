@@ -20,7 +20,7 @@ react-native-modal<br>
 react-native-tab-view<br>
 rn-range-slider<br>
 Custom Validation<br>
-
+multiple componenets in a file and exporting without default<br>
 
 <div style="flex-direction: row">
   <img src="screenshots/launchscreen.png" width="150" height="300" />
