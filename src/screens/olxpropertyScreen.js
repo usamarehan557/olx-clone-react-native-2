@@ -10,8 +10,13 @@ import {
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import CustomSwitch from '../components/CustomSwitch';
 import Modal from "react-native-modal";
-import {RangeSlider, Rail, RailSelected, Label, Notch, Thumb} from 'rn-range-slider';
-
+import Slider from 'rn-range-slider';
+import Thumb from '../components/Slider/Thumb';
+import Rail from '../components/Slider/Rail';
+import RailSelected from '../components/Slider/RailSelected';
+import Notch from '../components/Slider/Notch';
+import Label from '../components/Slider/Label';
+import {Categorycapsule} from '../components/categoryball';
 
 const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
@@ -19,24 +24,28 @@ const deviceHeight = Dimensions.get('window').height;
 
 function OlxpropertyScreen({navigation}) {
 
+    const [low, setLow] = useState(0);
+    const [high, setHigh] = useState(250);
+  
+    const renderThumb = useCallback(() => <Thumb/>, []);
     const renderRail = useCallback(() => <Rail/>, []);
     const renderRailSelected = useCallback(() => <RailSelected/>, []);
     const renderLabel = useCallback(value => <Label text={value}/>, []);
     const renderNotch = useCallback(() => <Notch/>, []);
-    const renderThumb = useCallback(() => <Thumb/>, []);
-    const [low, setLow] = useState(0);
-    const [high, setHigh] = useState(250);
+    const handleValueChange = useCallback((low, high) => {
+      setLow(low);
+      console.log(low, high);
+      setHigh(high);
+    }, []);
+
+
+
 
     const [scrollEnabled, setScrollEnabled] = useState(false)
 
 
     const enableScroll = () => setScrollEnabled(true);
     const disableScroll = () => setScrollEnabled(false);
-
-    const handleValueChange = useCallback((low, high) => {
-        setLow(low);
-        setHigh(high);
-    }, []);
 
     const [isModaloneVisible, setModaloneVisible] = useState(false);
 
@@ -117,7 +126,7 @@ function OlxpropertyScreen({navigation}) {
 
                 <View>
                     <ImageBackground source={require('../assets/property-banner.jpg')}
-                        style={{height: 350, width: '100%'}}>
+                        style={{height: 380, width: '100%'}}>
 
                         <View style={{margin: 20}}>
                             <View>
@@ -176,7 +185,7 @@ function OlxpropertyScreen({navigation}) {
                                   }}>
                                       <Image source={require('../assets/locationgrey.png')}
                                       style={{width: 20, height: 20, marginLeft: 5}}/>
-                                    <Text style={{marginLeft: 2, color: '#003034'}}>Rawalpindi</Text>
+                                    <Text style={{width: 60, marginLeft: 2, color: '#003034',}} numberOfLines={1}>Rawalpindi</Text>
 
                                 </TouchableOpacity>
 
@@ -191,7 +200,9 @@ function OlxpropertyScreen({navigation}) {
                                         keyboardType='numeric'
                                         placeholder='Min'
                                         onChangeText={(text) => console.log(text)}
-                                        style={{width: '80%'}}/>
+                                        style={{width: '80%'}}
+                                        value={low === 0 ? '' : low.toString()}
+                                        />
                                 </View>
                                 
                                 <View 
@@ -202,32 +213,39 @@ function OlxpropertyScreen({navigation}) {
                                         keyboardType='numeric'
                                         placeholder='Max'
                                         onChangeText={(text) => console.log(text)}
-                                        style={{width: '80%'}}/>
+                                        style={{width: '80%'}}
+                                        value={high === 250 ? '' :high.toString()}/>
                                 </View>
 
                             </View>
 
-                            <View style={{width: '100%', marginLeft: 20}}>
+                            <View style={{width: '100%', marginVertical: 15}}>
 
-                                {/* <RangeSlider
-                                    style={{width: 160, height: 80}}
-                                    gravity={'center'}
+                                <Slider
+                                    style={styles.slider}
+                                    min={0}
+                                    max={250}
+                                    step={1}
+                                    disableRange={false}
+                                    floatingLabel={false}
                                     renderThumb={renderThumb}
                                     renderRail={renderRail}
                                     renderRailSelected={renderRailSelected}
-                                    renderLabel={renderLabel}
-                                    renderNotch={renderNotch}
-                                    min={200}
-                                    max={1000}
-                                    step={20}
-                                    selectionColor="#3df"
-                                    blankColor="#f618"
-                                    onValueChanged={(low, high, fromUser) => {
-                                        setLow(low);
-                                        setHigh(high);
-                                }}/> */}
+                                    // renderLabel={renderLabel}
+                                    // renderNotch={renderNotch}
+                                    onValueChanged={handleValueChange}
+                                />
 
                             </View>
+
+                            <TouchableOpacity 
+                                style={{borderRadius: 5, flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
+                                    width: '100%', marginVertical: 10, backgroundColor: '#3C77FF', height: 40}}>
+                                    <Image source={require('../assets/find-white.png')}
+                                     style={{height: 18, width: 18}}/>
+                                     <Text style={{color:'white', marginLeft: 5}}>SEARCH</Text>
+
+                            </TouchableOpacity>
 
 
 
@@ -235,6 +253,28 @@ function OlxpropertyScreen({navigation}) {
 
                         </View>
                     </ImageBackground>
+
+                    <View style={{width: '100%', flexDirection: 'row', backgroundColor: 'white', height: 40}}>
+                        <Text 
+                            style={{ fontWeight: 'bold', marginLeft: 15, color: '#003034', alignSelf: 'flex-end'}}>
+                                Browse by categories</Text>
+                    </View>
+
+                    <ScrollView 
+                    style={{backgroundColor: 'white', paddingLeft: 20}} 
+                    horizontal={true} 
+                    showsHorizontalScrollIndicator={false}>
+
+                            <Categorycapsule 
+                            color={'#003034'}
+                            name={'Popular'} />
+
+                            <Categorycapsule 
+                            color={'#003034'}
+                            name={'Popular'} />
+
+
+                    </ScrollView>
 
                 </View>
             <Animated.Text>1</Animated.Text>

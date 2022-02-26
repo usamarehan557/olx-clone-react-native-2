@@ -43,4 +43,17 @@ const Categoryball = (props) => {
     );
 }
 
-export default Categoryball;
+// export default Categoryball;
+
+
+const Categorycapsule = (props) => {
+    return (
+        <View style={{justifyContent: 'center', marginHorizontal: 5,
+            backgroundColor: props.color , height: 30, width: 90, borderRadius: 20, alignItems: 'center'}}>
+            <Text style={{color: 'white'}}>{props.name}</Text>
+        </View>
+    );
+
+}
+
+export {Categoryball, Categorycapsule};

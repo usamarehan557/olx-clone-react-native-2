@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, ScrollView, TouchableOpacity, StyleSheet, Image, Modal, TextInput,} from 'react-native';
 
-import Categoryball from '../components/categoryball';
+import {Categoryball} from '../components/categoryball';
 import AdCards from '../components/AdCards';
 
 
