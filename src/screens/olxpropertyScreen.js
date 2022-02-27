@@ -6,7 +6,7 @@ import {
     TouchableOpacity, ScrollView,
     Image,
     Text,
-    StyleSheet, Animated, SafeAreaView, ImageBackground } from 'react-native';
+    StyleSheet, Animated, SafeAreaView, ImageBackground, TouchableWithoutFeedback } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import CustomSwitch from '../components/CustomSwitch';
 import Modal from "react-native-modal";
@@ -16,7 +16,11 @@ import Rail from '../components/Slider/Rail';
 import RailSelected from '../components/Slider/RailSelected';
 import Notch from '../components/Slider/Notch';
 import Label from '../components/Slider/Label';
-import {Categorycapsule} from '../components/categoryball';
+import {Categorycapsule, PropertyCategoryCards} from '../components/categoryball';
+import Swiper from 'react-native-swiper';
+import { PropertyadCard, NewsCard } from '../components/AdCards';
+
+
 
 const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
@@ -261,95 +265,281 @@ function OlxpropertyScreen({navigation}) {
                     </View>
 
                     <ScrollView 
-                    style={{backgroundColor: 'white', paddingLeft: 20}} 
+                    style={{backgroundColor: 'white', paddingLeft: 20, paddingTop: 10}} 
                     horizontal={true} 
                     showsHorizontalScrollIndicator={false}>
 
                             <Categorycapsule 
+                            textcolor={'white'}
                             color={'#003034'}
                             name={'Popular'} />
 
                             <Categorycapsule 
-                            color={'#003034'}
-                            name={'Popular'} />
-
+                            textcolor={'#003034'}
+                            color={'#E7E7E7'}
+                            name={'Area Unit'} />
+                            <Categorycapsule 
+                            textcolor={'#003034'}
+                            color={'#E7E7E7'}
+                            name={'Categories'} />
+                            <Categorycapsule 
+                            textcolor={'#003034'}
+                            color={'#E7E7E7'}
+                            name={'Cities'} />
+                            <Categorycapsule 
+                            textcolor={'#003034'}
+                            color={'#E7E7E7'}
+                            name={'Price Range'} />
 
                     </ScrollView>
 
-                </View>
-            <Animated.Text>1</Animated.Text>
-            <Animated.Text>2</Animated.Text>
-            <Animated.Text>3</Animated.Text>
-            <Animated.Text>5</Animated.Text>
-            <Animated.Text>4</Animated.Text>
-            <Animated.Text>6</Animated.Text>
-            <Animated.Text>7</Animated.Text>
-            <Animated.Text>8</Animated.Text>
-            <Animated.Text>9</Animated.Text>
-            <Animated.Text>10</Animated.Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
-            <Text>properties</Text>
+                        <View style={{backgroundColor: 'white', height: 240, paddingTop: 10}}>
+                            <Swiper
+                            style={{}}
+                            height={240}
+                            onMomentumScrollEnd={(e, state, context) =>
+                                console.log('index:', state.index)
+                            }
+                            dot={
+                                <View
+                                style={{
+                                    backgroundColor: 'white',
+                                    borderColor: '#003034',
+                                    borderWidth: 1,
+                                    width: 8,
+                                    height: 8,
+                                    borderRadius: 4,
+                                    marginLeft: 3,
+                                    marginRight: 3,
+                                    marginTop: 3,
+                                    marginBottom: 3
+                                }}
+                                />
+                                }
+                                activeDot={
+                                    <View
+                                    style={{
+                                        backgroundColor: '#003034',
+                                        width: 8,
+                                        height: 8,
+                                        borderRadius: 4,
+                                        marginLeft: 3,
+                                        marginRight: 3,
+                                        marginTop: 3,
+                                        marginBottom: 3
+                                    }}
+                                    />
+                                }
+                                paginationStyle={{
+                                    bottom: 0,
+                                    // left: null,
+                                    // right: 10
+                                }}
+                                loop={false}
+                                >
 
+                            <View style={{flex: 1}}>
+                                <View style={{height: 100,
+                                    flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center'}}>
+
+
+                                    <PropertyCategoryCards 
+                                        title={'Small'}
+                                        subtitle={'Houses'}
+                                    />
+                                    <PropertyCategoryCards 
+                                        title={'New'}
+                                        subtitle={'Houses'}
+                                    />
+                                    <PropertyCategoryCards 
+                                        title={'1 Bedroom'}
+                                        subtitle={'Apartments'}
+                                    />
+
+                                </View>
+
+
+                                <View style={{height: 90,
+                                    flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center'}}>
+
+                                   <PropertyCategoryCards 
+                                        title={'2 Bedroom'}
+                                        subtitle={'Apartments'}
+                                    />
+                                    <PropertyCategoryCards 
+                                        title={'Installment'}
+                                        subtitle={'Houses'}
+                                    />
+                                    <PropertyCategoryCards 
+                                        title={'Installment'}
+                                        subtitle={'Apartments'}
+                                    />
+
+                                </View>
+
+                            </View>
+                                   
+                            <View style={{flex: 1}}>
+
+                                <View style={{height: '40%',
+                                    flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center'}}>
+
+
+                                    <PropertyCategoryCards 
+                                        title={'Furnished'}
+                                        subtitle={'Apartments'}
+                                    />
+                                    <PropertyCategoryCards 
+                                        title={'Corner'}
+                                        subtitle={'Houses'}
+                                    />
+                                    <PropertyCategoryCards 
+                                        title={'Corner'}
+                                        subtitle={'Flats'}
+                                    />
+
+                                </View>
+
+                            </View>
+
+                            </Swiper>
+
+                            <View style={{flexDirection: 'row', backgroundColor: 'white', height: 30, alignItems: 'flex-end'}}>
+
+                                <Text style={{fontWeight: 'bold',
+                                fontSize: 13, marginLeft: 15, color: '#003034'}}>Featured Properties for Sale</Text>
+
+                                <Text 
+                                    style={{
+                                        fontSize: 13,
+                                        color: '#3C77FF',
+                                        marginLeft: 120}}>View all</Text>
+
+                            </View>
+
+                        </View>
+
+                        <ScrollView 
+                            style={{backgroundColor: 'white', paddingLeft: 15, paddingVertical: 10}} 
+                            horizontal={true} 
+                            showsHorizontalScrollIndicator={false}>
+                                <PropertyadCard 
+                                    featured={true}
+                                    price={'46 Lac'}
+                                    name={'JEFF Heights'}
+                                    address={'Lahore, Pakistan'}
+                                    date={'20 Jan'}
+                                />
+                                <PropertyadCard 
+                                    featured={true}
+                                    price={'20 Lac'}
+                                    name={'One Heights'}
+                                    address={'Lahore, Pakistan'}
+                                    date={'20 Jan'}
+                                />
+                                <PropertyadCard 
+                                    featured={true}
+                                    price={'30 Lac'}
+                                    name={'One Heights'}
+                                    address={'Lahore, Pakistan'}
+                                    date={'20 Jan'}
+                                />
+                                <PropertyadCard 
+                                    featured={true}
+                                    price={'30 Lac'}
+                                    name={'One Heights'}
+                                    address={'Lahore, Pakistan'}
+                                    date={'20 Jan'}
+                                />
+                        </ScrollView>
+
+                        <View style={{flexDirection: 'row', backgroundColor: 'white', height: 30, alignItems: 'flex-end'}}>
+
+                            <Text style={{fontWeight: 'bold',
+                                fontSize: 13, marginLeft: 15, color: '#003034'}}>Featured Properties for Rent</Text>
+
+                            <Text 
+                                style={{
+                                    fontSize: 13,
+                                    color: '#3C77FF',
+                                    marginLeft: 120}}>View all</Text>
+
+                        </View>
+
+                        <ScrollView 
+                            style={{backgroundColor: 'white', paddingLeft: 15, paddingVertical: 10}} 
+                            horizontal={true} 
+                            showsHorizontalScrollIndicator={false}>
+                                <PropertyadCard 
+                                    featured={true}
+                                    price={'46000'}
+                                    name={'JEFF Heights'}
+                                    address={'Lahore, Pakistan'}
+                                    date={'20 Jan'}
+                                />
+                                <PropertyadCard 
+                                    featured={true}
+                                    price={'29000'}
+                                    name={'One Heights'}
+                                    address={'Lahore, Pakistan'}
+                                    date={'20 Jan'}
+                                />
+                                <PropertyadCard 
+                                    featured={true}
+                                    price={'65000'}
+                                    name={'One Heights'}
+                                    address={'Lahore, Pakistan'}
+                                    date={'20 Jan'}
+                                />
+                                <PropertyadCard 
+                                    featured={true}
+                                    price={'70000'}
+                                    name={'One Heights'}
+                                    address={'Lahore, Pakistan'}
+                                    date={'20 Jan'}
+                                />
+                        </ScrollView>
+
+                        <View style={{flexDirection: 'row', backgroundColor: 'white', height: 30, alignItems: 'flex-end'}}>
+
+                            <Text style={{fontWeight: 'bold', fontSize: 13, marginLeft: 15, color: '#003034'}}>Latest News</Text>
+
+                        </View>
+
+                        <NewsCard 
+                            pic={require('../assets/news1.jpg')}
+                            headline={'An international property investment firm has launched an Rs.11 Billion high rise project in DHA Phase 5, Lahore.'}
+                            date={'25 Feb, 2022'}
+                        />
+
+                        <NewsCard 
+                            pic={require('../assets/news2.jpg')}
+                            headline={'The government has revised (lowered) the cost of housing finance under Naya Pakistan Housing and Development Authority (NAPHDA). This should help a common man finally own a house of his own, a dream sold by almost all the governments since the 1970s.'}
+                            date={'20 Jan, 2022'}
+                        />
+
+                        <NewsCard 
+                            pic={require('../assets/news3.png')}
+                            headline={'The government has revised (lowered) the cost of housing finance under Naya Pakistan Housing and Development Authority (NAPHDA). This should help a common man finally own a house of his own, a dream sold by almost all the governments since the 1970s.'}
+                            date={'20 Jan, 2022'}
+                        />
+                        <NewsCard 
+                            pic={require('../assets/news4.jpg')}
+                            headline={'The government has revised (lowered) the cost of housing finance under Naya Pakistan Housing and Development Authority (NAPHDA). This should help a common man finally own a house of his own, a dream sold by almost all the governments since the 1970s.'}
+                            date={'20 Jan, 2022'}
+                        />
+                                    
+
+
+
+
+
+                        
+             
+
+
+
+                </View>
         </Animated.ScrollView>
       </SafeAreaView>
     </SafeAreaProvider>

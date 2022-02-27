@@ -50,10 +50,26 @@ const Categorycapsule = (props) => {
     return (
         <View style={{justifyContent: 'center', marginHorizontal: 5,
             backgroundColor: props.color , height: 30, width: 90, borderRadius: 20, alignItems: 'center'}}>
-            <Text style={{color: 'white'}}>{props.name}</Text>
+            <Text style={{color: props.textcolor}}>{props.name}</Text>
         </View>
     );
 
 }
 
-export {Categoryball, Categorycapsule};
+
+const PropertyCategoryCards = (props) => {
+    return (
+            <TouchableOpacity 
+                style={{borderRadius: 5, justifyContent: 'center', alignItems: 'center',
+                    borderColor: '#e7e7e7', borderWidth: 1, height: 70, width: 95}}>
+                        <Text style={{color: '#003034'}}>
+                            {props.title}
+                        </Text>
+                        <Text style={{fontSize: 12}}>
+                            {props.subtitle}
+                        </Text>
+            </TouchableOpacity>
+    )
+}
+
+export {Categoryball, Categorycapsule, PropertyCategoryCards};

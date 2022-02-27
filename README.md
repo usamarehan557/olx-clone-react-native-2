@@ -15,4 +15,4 @@ react-native-counry-picker-modal<br>
 react-redux<br>
 react-redux/toolkit<br>
 custom provider wrapper for app<br>
-
+react-native-swiper<br>
