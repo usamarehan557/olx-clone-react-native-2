@@ -1,5 +1,5 @@
 # olx-clone-react-native-2
-This is olx android app clone made with react native
+This is an olx android app clone made with react native
 
 I used following tech pieces in his project:
 
