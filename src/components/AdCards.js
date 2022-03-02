@@ -179,6 +179,7 @@ const PropertyadCard = (props) => {
 }
 
 const NewsCard =(props)=>{
+    
     return (
         <TouchableOpacity style={{flexDirection: 'row', height: 100, width: '100%', backgroundColor: 'white'}}>
         <View style={{flex: 2}}>
@@ -202,4 +203,66 @@ const NewsCard =(props)=>{
     )
 }
 
-export {AdCards, PropertyadCard, NewsCard };
+const CarsAdCard = (props) => {
+    const featured = props.featured;
+    return (
+        <TouchableOpacity style={{justifyContent: 'center', marginRight: 15,
+        height: 250, width: 175, borderWidth: 1, borderColor:'#f7f7f7', borderRadius: 5}}>
+
+        <View style={{flex: 5, backgroundColor: 'yellow', alignItems: 'center'}}>
+            <ImageBackground source={require('../assets/mehran.jpg')} style={{width: '100%', height: '100%'}}>
+            {featured? 
+
+
+            <Text style={{
+                backgroundColor: '#FFCE33',
+                position: 'absolute', borderRadius: 3,
+                top: 10, left: 5, fontWeight: 'bold',
+                fontSize: 10, color: '#003034',padding: 5
+                }}>FEATURED</Text> 
+                
+            : null }
+            </ImageBackground>    
+        </View>
+
+    <View style={{flex: 5, borderBottomLeftRadius: 5, borderBottomRightRadius: 5, paddingHorizontal: 5}}>
+
+<View style={{width: '100%', flex: 1, justifyContent: 'center'}}>
+
+    <Text style={{color: '#003034', fontWeight: 'bold', fontSize: 18}}>
+        Rs. {props.price}
+        
+    </Text>
+</View>
+<View style={{width: '100%', flex: 1, justifyContent: 'center'}}>
+    <Text style={{color: '#003034', fontSize: 12, marginBottom: 2}} numberOfLines={1}>
+        {props.name}
+    </Text>
+    <Text style={{color: '#003034', fontSize: 12}} numberOfLines={1}>
+        {props.year} - {props.mileage} Km
+    </Text>
+</View>
+
+<View style={{width: '100%', flex: 1, flexDirection: 'row'}}>
+
+    <View  style={{flex: 5, justifyContent: 'center'}}>
+        <Text numberOfLines={1} style={{fontSize: 10, color: '#003034'}}>
+        {props.address}
+        </Text>
+    </View>
+
+        <View  style={{flex: 2, justifyContent: 'center'}}>
+        
+            <Text style={{fontSize: 10, letterSpacing: -0.5, marginLeft: 5, color: '#003034'}}>
+            {props.date}
+            </Text>
+        </View>
+    </View>
+
+        </View>
+
+    </TouchableOpacity>
+    )
+}
+
+export {AdCards, PropertyadCard, NewsCard, CarsAdCard };

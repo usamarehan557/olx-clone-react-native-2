@@ -166,7 +166,7 @@ return (
         <View style={styles.headerMenu}>
             <TouchableOpacity><Image source={require("../assets/olx-info.png")}/></TouchableOpacity>
             <TouchableOpacity><Image source={require("../assets/olxmall-dark.png")}/></TouchableOpacity>
-            <TouchableOpacity><Image source={require("../assets/olxmotors-dark.png")}/></TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Olxmotors')}><Image source={require("../assets/olxmotors-dark.png")}/></TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate('Olxproperty')}><Image source={require("../assets/olxproperty-dark.png")}/></TouchableOpacity>
         </View>
         <View style={styles.locationFilter}>

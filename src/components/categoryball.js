@@ -72,4 +72,18 @@ const PropertyCategoryCards = (props) => {
     )
 }
 
-export {Categoryball, Categorycapsule, PropertyCategoryCards};
+const MotorsMakeCard = (props) => {
+    return (
+        <TouchableOpacity 
+        style={{borderRadius: 5, justifyContent: 'center', alignItems: 'center',
+            borderColor: '#e7e7e7', borderWidth: 1, height: 70, width: 70}}>
+                <Image source={props.logo}
+                style={{height: props.height, width: props.width}}/>
+                
+                <Text style={{fontSize: 12}}>
+                    {props.name}
+                </Text>
+        </TouchableOpacity>
+    )
+}
+export {Categoryball, Categorycapsule, PropertyCategoryCards, MotorsMakeCard};

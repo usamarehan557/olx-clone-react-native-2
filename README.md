@@ -61,5 +61,5 @@ multiple componenets in a file and exporting without default<br>
   <img src="screenshots/citymodal.png" width="150" height="300" />
   <img src="screenshots/rangefilter.png" width="150" height="300" />
   <img src="screenshots/olx-property.gif" width="150" height="300" />
-
+  <img src="screenshots/olx-motors.gif" width="150" height="300" />
 </div>

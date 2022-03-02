@@ -115,7 +115,7 @@ function OlxpropertyScreen({navigation}) {
                 <Image source={require("../assets/olx-small.png")} style={{height: 20, width: 40}}/>
                 </TouchableOpacity>
             <TouchableOpacity><Image source={require("../assets/olxmall-dark.png")}/></TouchableOpacity>
-            <TouchableOpacity><Image source={require("../assets/olxmotors-dark.png")}/></TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Olxmotors')}><Image source={require("../assets/olxmotors-dark.png")}/></TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate('Olxproperty')}><Image source={require("../assets/olxproperty-info.png")}/></TouchableOpacity>
         </Animated.View> 
 
@@ -265,7 +265,7 @@ function OlxpropertyScreen({navigation}) {
                     </View>
 
                     <ScrollView 
-                    style={{backgroundColor: 'white', paddingLeft: 20, paddingTop: 10}} 
+                    style={{backgroundColor: 'white', paddingHorizontal: 20, paddingTop: 10 , width: deviceWidth}} 
                     horizontal={true} 
                     showsHorizontalScrollIndicator={false}>
 
@@ -290,6 +290,8 @@ function OlxpropertyScreen({navigation}) {
                             textcolor={'#003034'}
                             color={'#E7E7E7'}
                             name={'Price Range'} />
+
+                            <View style={{width: 30, height: '100%'}}></View>
 
                     </ScrollView>
 
