@@ -1,20 +1,20 @@
 import React from 'react';
-import HomeScreen from '../screens/HomeScreen';
+import OlxHomeScreen from '../screens/OlxHomeScreen';
 import TestScreen from '../screens/TestScreen';
 import OlxpropertyScreen from '../screens/olxpropertyScreen';
 import OlxMotorsScreen from '../screens/OlxMotorsScreen';
 import Olxpropertylocationfilterscreen from '../screens/olxpropertylocationfilterscreen';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
+import HomeTabs from './HomeTabs';
 
 const Stack = createNativeStackNavigator();
 
 const AppStack = () => {
     return (
-        <Stack.Navigator initialRouteName='Olxmotors'>
+        <Stack.Navigator initialRouteName='HomeTab'>
             <Stack.Screen 
-            name="Home"
-            component={HomeScreen} 
+            name="HomeTab"
+            component={HomeTabs} 
             options={{
                 headerShown: false
             }}/>

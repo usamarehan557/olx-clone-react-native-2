@@ -50,93 +50,93 @@ function TestScreen(props) {
 
 
     return (
-        // <View style={{backgroundColor: 'white'}}>
+        <View style={{backgroundColor: 'white'}}>
 
-        //     <Text>The count is : {count}</Text>
+            <Text>The count is : {count}</Text>
 
-        //     <Button 
-        //         title='increment'
-        //         onPress={() => dispatch(increment())}
-        //     />
-        //     <Button 
-        //         title='decrement'
-        //         onPress={() => dispatch(decrement())}
-        //     />
+            <Button 
+                title='increment'
+                onPress={() => dispatch(increment())}
+            />
+            <Button 
+                title='decrement'
+                onPress={() => dispatch(decrement())}
+            />
 
-        //     {LoginState ? <Text>true</Text> : <Text>false</Text>}
+            {LoginState ? <Text>true</Text> : <Text>false</Text>}
             
 
-        //     <Button 
-        //         title='login'
-        //         onPress={() => dispatch(login())}
-        //     />
-        //     <Button 
-        //         title='logout'
-        //         onPress={() => dispatch(logout())}
-        //     />
+            <Button 
+                title='login'
+                onPress={() => dispatch(login())}
+            />
+            <Button 
+                title='logout'
+                onPress={() => dispatch(logout())}
+            />
 
-        // </View>
-
-
-    <View style={styles.root}>
-        <View style={styles.header}>
-        <Text style={styles.text}>Range slider demo</Text>
         </View>
-    <Slider
-      style={styles.slider}
-      min={min}
-      max={max}
-      step={1}
-      disableRange={rangeDisabled}
-      floatingLabel={floatingLabel}
-      renderThumb={renderThumb}
-      renderRail={renderRail}
-      renderRailSelected={renderRailSelected}
-      renderLabel={renderLabel}
-      renderNotch={renderNotch}
-      onValueChanged={handleValueChange}
-    />
-    <View style={styles.horizontalContainer}>
-      <Text style={styles.valueText}>{low}</Text>
-      <Text style={styles.valueText}>{high}</Text>
-    </View>
-    <View style={styles.horizontalContainer}>
-      <TextButton
-        text="Toggle floating"
-        containerStyle={styles.button}
-        onPress={toggleFloatingLabel}
-      />
-      <TextButton
-        text={rangeDisabled ? 'Enable range' : 'Disable range'}
-        containerStyle={styles.button}
-        onPress={toggleRangeEnabled}
-      />
-    </View>
-    <View style={styles.horizontalContainer}>
-      <TextButton
-        text="Set min to 0"
-        containerStyle={styles.button}
-        onPress={setMinTo0}
-      />
-      <TextButton
-        text="Set min to 50"
-        containerStyle={styles.button}
-        onPress={setMinTo50}
-      />
-    </View>
-    <View style={styles.horizontalContainer}>
-      <TextButton
-        text="Set max to 100"
-        containerStyle={styles.button}
-        onPress={setMaxTo100}
-      />
-      <TextButton
-        text="Set max to 500"
-        containerStyle={styles.button}
-        onPress={setMaxTo500}
-      />
-    </View>
-  </View>
+
+
+  //   <View style={styles.root}>
+  //       <View style={styles.header}>
+  //       <Text style={styles.text}>Range slider demo</Text>
+  //       </View>
+  //   <Slider
+  //     style={styles.slider}
+  //     min={min}
+  //     max={max}
+  //     step={1}
+  //     disableRange={rangeDisabled}
+  //     floatingLabel={floatingLabel}
+  //     renderThumb={renderThumb}
+  //     renderRail={renderRail}
+  //     renderRailSelected={renderRailSelected}
+  //     renderLabel={renderLabel}
+  //     renderNotch={renderNotch}
+  //     onValueChanged={handleValueChange}
+  //   />
+  //   <View style={styles.horizontalContainer}>
+  //     <Text style={styles.valueText}>{low}</Text>
+  //     <Text style={styles.valueText}>{high}</Text>
+  //   </View>
+  //   <View style={styles.horizontalContainer}>
+  //     <TextButton
+  //       text="Toggle floating"
+  //       containerStyle={styles.button}
+  //       onPress={toggleFloatingLabel}
+  //     />
+  //     <TextButton
+  //       text={rangeDisabled ? 'Enable range' : 'Disable range'}
+  //       containerStyle={styles.button}
+  //       onPress={toggleRangeEnabled}
+  //     />
+  //   </View>
+  //   <View style={styles.horizontalContainer}>
+  //     <TextButton
+  //       text="Set min to 0"
+  //       containerStyle={styles.button}
+  //       onPress={setMinTo0}
+  //     />
+  //     <TextButton
+  //       text="Set min to 50"
+  //       containerStyle={styles.button}
+  //       onPress={setMinTo50}
+  //     />
+  //   </View>
+  //   <View style={styles.horizontalContainer}>
+  //     <TextButton
+  //       text="Set max to 100"
+  //       containerStyle={styles.button}
+  //       onPress={setMaxTo100}
+  //     />
+  //     <TextButton
+  //       text="Set max to 500"
+  //       containerStyle={styles.button}
+  //       onPress={setMaxTo500}
+  //     />
+  //   </View>
+  // </View>
 
 
     );

@@ -9,17 +9,29 @@
 import React, {useEffect, useState} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import SplashScreen from 'react-native-splash-screen';
-import { store } from './src/redux/store';
+
+
+import { store, persistor } from './src/redux/store';
 import {Provider} from 'react-redux';
+
+
 import { useSelector } from 'react-redux';
+
 import AppStack from './src/routes/AppStack';
 import AuthStack from './src/routes/AuthStack';
+import { PersistGate } from 'redux-persist/integration/react';
+
+
+
+
 
 const AppWrapper = () => {
   // const store = createStore(rootReducer);
   return (
     <Provider store={store}>
-      <App /> 
+      <PersistGate loading={null} persistor={persistor}>
+        <App /> 
+      </PersistGate>
     </Provider>
   )
 }

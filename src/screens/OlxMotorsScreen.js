@@ -72,10 +72,10 @@ function OlxMotorsScreen({navigation}) {
 
      
         <Animated.View style={[styles.headerMenu, {height: headerHeight}]}>
-            <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+            <TouchableOpacity onPress={() => navigation.navigate('OlxHome')}>
                 <Image source={require("../assets/olx-small.png")} style={{height: 20, width: 40}}/>
                 </TouchableOpacity>
-            <TouchableOpacity><Image source={require("../assets/olxmall-dark.png")}/></TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Test')}><Image source={require("../assets/olxmall-dark.png")}/></TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate('Olxmotors')}><Image source={require("../assets/olxmotors-info.png")}/></TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate('Olxproperty')}><Image source={require("../assets/olxproperty-dark.png")}/></TouchableOpacity>
         </Animated.View> 

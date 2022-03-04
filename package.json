@@ -12,6 +12,7 @@
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.16.1",
     "@react-native-community/clipboard": "^1.5.1",
+    "@react-navigation/bottom-tabs": "^6.2.0",
     "@react-navigation/material-top-tabs": "^6.1.1",
     "@react-navigation/native": "^6.0.8",
     "@react-navigation/native-stack": "^6.5.0",
@@ -29,6 +30,8 @@
     "react-native-tab-view": "^3.1.1",
     "react-native-webview": "^11.17.2",
     "react-redux": "^7.2.6",
+    "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.4.1",
     "rn-range-slider": "^2.1.1"
   },
   "devDependencies": {

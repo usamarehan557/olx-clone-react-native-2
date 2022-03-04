@@ -5,7 +5,7 @@ import {Categoryball} from '../components/categoryball';
 import {AdCards} from '../components/AdCards';
 
 
-function HomeScreen({navigation}) {
+function OlxHomeScreen({navigation}) {
     const [locationmodalVisible, setLocationmodalVisible] = useState(false);
     const [itemsmodalVisible, setItemsmodalVisible] = useState(false);
     const [featured, setFeatured] = useState(false);
@@ -164,8 +164,8 @@ return (
         stickyHeaderIndices={[2]}>
 
         <View style={styles.headerMenu}>
-            <TouchableOpacity><Image source={require("../assets/olx-info.png")}/></TouchableOpacity>
-            <TouchableOpacity><Image source={require("../assets/olxmall-dark.png")}/></TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Home')}><Image source={require("../assets/olx-info.png")}/></TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Test')}><Image source={require("../assets/olxmall-dark.png")}/></TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate('Olxmotors')}><Image source={require("../assets/olxmotors-dark.png")}/></TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate('Olxproperty')}><Image source={require("../assets/olxproperty-dark.png")}/></TouchableOpacity>
         </View>
@@ -448,4 +448,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default HomeScreen;
+export default OlxHomeScreen;
